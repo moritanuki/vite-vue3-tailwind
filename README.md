@@ -6,19 +6,25 @@
 npm create vite@latest
 ```
 
-2. TailwindやAutoprefixerをインストールする
+2. 上記で作成したプロジェクトディレクトリに移動しておく
+  （例）プロジェクト名「vite-vue3-tailwind」の場合
+```bash
+cd vite-vue3-tailwind
+```
+
+3. TailwindやAutoprefixerをインストールする
 ```bash
 npm install -D tailwindcss postcss autoprefixer
 ```
 なぜPostCSSとAutoprefixer（PostCSSのプラグイン）もインストールしているのか？の問いに対して、[公式の説明](https://tailwindcss.com/docs/installation/using-postcss)抜粋が以下。
 > Tailwind CSSをPostCSSプラグインとしてインストールすることは、webpack、Rollup、Vite、Parcelなどのビルドツールと統合する最もシームレスな方法です。
 
-3. Tailwind読み込み用CSSを作成する
+4. Tailwind読み込み用CSSを作成する
 ```bash
 mkdir -p ./src/assets && echo -e "@tailwind base;\n@tailwind components;\n@tailwind utilities;" | tee ./src/assets/index.css > /dev/null
 ```
 
-4. main.tsで上記のCSSを読み込む
+5. main.tsで上記のCSSを読み込む
 ```typescript
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -27,7 +33,7 @@ import './assets/index.css'
 createApp(App).mount('#app')
 ```
 
-5. tailwind.config.jsに読み込むファイルを設定する
+6. tailwind.config.jsに読み込むファイルを設定する
 ```javascript
 export default {
   content: ['./src/**/*.{html,js,vue}'],
