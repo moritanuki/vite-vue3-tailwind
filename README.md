@@ -19,12 +19,17 @@ npm install -D tailwindcss postcss autoprefixer
 なぜPostCSSとAutoprefixer（PostCSSのプラグイン）もインストールしているのか？の問いに対して、[公式の説明](https://tailwindcss.com/docs/installation/using-postcss)抜粋が以下。
 > Tailwind CSSをPostCSSプラグインとしてインストールすることは、webpack、Rollup、Vite、Parcelなどのビルドツールと統合する最もシームレスな方法です。
 
-4. Tailwind読み込み用CSSを作成する
+4. TailwindとPostCSSのConfigファイルを作成する
+```bash
+npx tailwindcss init -p
+```
+
+5. Tailwind読み込み用CSSを作成する
 ```bash
 mkdir -p ./src/assets && echo -e "@tailwind base;\n@tailwind components;\n@tailwind utilities;" | tee ./src/assets/index.css > /dev/null
 ```
 
-5. main.tsで上記のCSSを読み込む
+6. main.tsで上記のCSSを読み込む
 ```typescript
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -33,7 +38,7 @@ import './assets/index.css'
 createApp(App).mount('#app')
 ```
 
-6. tailwind.config.jsに読み込むファイルを設定する
+7. tailwind.config.jsに読み込むファイルを設定する
 ```javascript
 export default {
   content: ['./src/**/*.{html,js,vue}'],
